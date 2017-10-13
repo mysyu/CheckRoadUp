@@ -8,7 +8,7 @@ from geocodequery import GeocodeQuery
 import mysql.connector as DB
 
 cord = GeocodeQuery("zh-tw", "tw")
-db = DB.connect( host = 'mysyu.ddns.net' , user = 'road' , passwd = 'road' , database = 'road' , charset = 'utf8' )
+db = DB.connect( host = 'mysyu.ddns.net' , user = 'road' , passwd = 'road' , db = 'road' , charset = 'utf8' )
 db.autocommit = False
 cursor = db.cursor()
 
@@ -23,7 +23,7 @@ while 1:
         db.rollback()
     else:
         break
-cursor.execute( 'TRUNCATE road' )
+cursor.execute( 'DELETE FROM  road WHERE 1' )
 db.commit()
 
 #事故accident
